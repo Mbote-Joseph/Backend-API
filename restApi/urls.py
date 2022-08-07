@@ -18,4 +18,8 @@ from .views import *
 urlpatterns = [
     path('get', getItems, name='getItems'),
     path('post', addItem, name='addItem'),
+    path('get/<int:pk>', getItem, name='getItem'),
+    path('put/<int:pk>', updateItem, name='updateItem'),
+    path('delete/<int:pk>', deleteItem, name='deleteItem'),
+    
 ]
