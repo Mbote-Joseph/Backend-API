@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from django import path, views
+from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('get', views.getItems, name='getItems'),
-    path('post', views.addItem, name='addItem'),
+    path('get', getItems, name='getItems'),
+    path('post', addItem, name='addItem'),
 ]
