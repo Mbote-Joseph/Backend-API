@@ -26,3 +26,18 @@ def getItem(request, pk):
     item = Item.objects.get(pk=pk)
     serializer = ItemSerializer(item)
     return Response(serializer.data)
+
+@api_view(['PUT'])
+def updateItem(request, pk):
+    item = Item.objects.get(pk=pk)
+    serializer = ItemSerializer(item, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    return Response(serializer.errors, status=400)
+
+@api_view(['DELETE'])
+def deleteItem(request, pk):
+    item = Item.objects.get(pk=pk)
+    item.delete()
+    return Response(status=204)
