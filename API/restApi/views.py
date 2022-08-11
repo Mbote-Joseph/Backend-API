@@ -12,7 +12,7 @@ def getItems(request):
     return Response(serializer.data)
 
 @api_view(['POST'])
-def createItem(request):
+def postItem(request):
     serializer = ItemSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
