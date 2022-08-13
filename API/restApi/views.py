@@ -5,12 +5,14 @@ from .models import Item
 from restApi.serializers import ItemSerializer
 
 # Create your views here.
+# Getting Items
 @api_view(['GET'])
 def getItems(request):
     items = Item.objects.all()
     serializer = ItemSerializer(items, many=True)
     return Response(serializer.data)
 
+# Posting Item
 @api_view(['POST'])
 def postItem(request):
     serializer = ItemSerializer(data=request.data)
