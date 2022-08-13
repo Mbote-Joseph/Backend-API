@@ -21,6 +21,7 @@ def postItem(request):
         return Response(serializer.data)
     return Response(serializer.errors)
 
+# Updating Item
 @api_view(['PUT'])
 def updateItem(request, pk):
     item = Item.objects.get(pk=pk)
@@ -30,6 +31,7 @@ def updateItem(request, pk):
         return Response(serializer.data)
     return Response(serializer.errors)
 
+# Deleting Item
 @api_view(['DELETE'])
 def deleteItem(request, pk):
     item = Item.objects.get(pk=pk)
