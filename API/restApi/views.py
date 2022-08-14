@@ -47,4 +47,10 @@ def getBooks(request):
     serializer = BookSerializer(books, many=True)
     return Response(serializer.data)
 
-    
+@api_view(['POST'])
+def postBook(request):
+    serializer = BookSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    return Response(serializer.errors)
