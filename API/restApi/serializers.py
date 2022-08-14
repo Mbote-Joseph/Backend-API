@@ -13,10 +13,17 @@
 # limitations under the License.
 
 from rest_framework import serializers
-from .models import Item
+from .models import Item, Book
 
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item
+        fields = ('id', 'name', 'description', 'price')
+        read_only_fields = ('id',)
+
+
+class BookSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Book
         fields = ('id', 'name', 'description', 'price')
         read_only_fields = ('id',)
