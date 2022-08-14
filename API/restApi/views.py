@@ -54,3 +54,12 @@ def postBook(request):
         serializer.save()
         return Response(serializer.data)
     return Response(serializer.errors)
+
+@api_view(['PUT'])
+def updateBook(request, pk):
+    book = Book.objects.get(pk=pk)
+    serializer = BookSerializer(instance=book, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    return Response(serializer.errors)
